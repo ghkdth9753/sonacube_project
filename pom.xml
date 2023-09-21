@@ -184,6 +184,9 @@
         <groupId>org.sonarsource.scanner.maven</groupId>
         <artifactId>sonar-maven-plugin</artifactId>
         <version>3.10.0.2594</version>
+        <configuration>
+          <sonar.host.url>http://localhost:9000</sonar.host.url>
+        </configuration>
       </plugin>
       <!-- 여기까지 수정했음 -->
     </plugins> 
@@ -199,8 +202,6 @@
     <!-- UTF-8 인코딩 설정 추가 -->
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <!-- SonarQube server URL -->
-    <sonar.host.url>http://localhost:9000</sonar.host.url>
   </properties>
 </project>
 
