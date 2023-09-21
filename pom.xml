@@ -196,6 +196,9 @@
     </repository> 
   </distributionManagement>
   <properties>
+    <!-- UTF-8 인코딩 설정 추가 -->
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <!-- SonarQube server URL -->
     <sonar.host.url>http://localhost:9000</sonar.host.url>
   </properties>
