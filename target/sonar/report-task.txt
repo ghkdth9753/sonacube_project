@@ -1,0 +1,6 @@
+projectKey=com.gu:project9
+serverUrl=http://localhost:9000
+serverVersion=10.2.0.77647
+dashboardUrl=http://localhost:9000/dashboard?id=com.gu%3Aproject9
+ceTaskId=AYq4XsqFIlGt2q1Sg3Dr
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AYq4XsqFIlGt2q1Sg3Dr

@@ -56,7 +56,7 @@ function myFunction(x) {
 				}else {
 					today.prev().addClass( "columnSelected" );
 				}
-			} else {				// 오늘이 없으면 일/월요일 
+			} else {				// 오늘이 없으면 일(day)/월요일
 				var ch = $("#weekDiv").children(".calendarColumn").first();
 				ch.addClass( "columnSelected" );
 				ch.next().addClass( "columnSelected" );
