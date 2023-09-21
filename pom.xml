@@ -187,10 +187,10 @@
       <name>Maven Central Repository</name>  
       <url>https://repo.maven.apache.org/maven2</url> 
     </repository> 
-  </distributionManagement> 
+  </distributionManagement>
+  <properties>
+    <!-- SonarQube server URL -->
+    <sonar.host.url>http://localhost:9000</sonar.host.url>
+  </properties>
 </project>
 
-<properties>
-<!-- SonarQube server URL -->
-<sonar.host.url>http://localhost:9000</sonar.host.url>
-</properties>
