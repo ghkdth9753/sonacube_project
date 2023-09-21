@@ -185,7 +185,7 @@
         <artifactId>sonar-maven-plugin</artifactId>
         <version>3.10.0.2594</version>
         <configuration>
-          <sonar.host.url>http://localhost:9000</sonar.host.url>
+          <sonar.host.url>http://172.17.0.2:9000</sonar.host.url>
         </configuration>
       </plugin>
       <!-- 여기까지 수정했음 -->
