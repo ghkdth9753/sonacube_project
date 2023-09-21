@@ -178,7 +178,12 @@
             </property> 
           </appSettings> 
         </configuration> 
-      </plugin> 
+      </plugin>
+      <plugin>
+        <groupId>org.sonarsource.scanner.maven</groupId>
+        <artifactId>sonar-maven-plugin</artifactId>
+        <version>4.2.1.3168</version> <!-- 버전은 현재 사용 중인 버전으로 변경 -->
+      </plugin>
     </plugins> 
   </build>  
   <distributionManagement> 
