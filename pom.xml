@@ -179,10 +179,13 @@
           </appSettings> 
         </configuration> 
       </plugin>
+      <!-- sonarqube 플러그인 추가한 내용 -->
       <plugin>
-        <groupId>org.codehaus.mojo</groupId>
+        <groupId>org.sonarsource.scanner.maven</groupId>
         <artifactId>sonar-maven-plugin</artifactId>
+        <version>3.10.0.2594</version>
       </plugin>
+      <!-- 여기까지 수정했음 -->
     </plugins> 
   </build>  
   <distributionManagement> 
