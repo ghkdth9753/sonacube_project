@@ -49,7 +49,7 @@ public class IndexCtr {
     }
     
     /**
-     * week calendar in main page.. 
+     * week calendar in main page..
      * Ajax.
      */
     @RequestMapping(value = "/moveDate")
