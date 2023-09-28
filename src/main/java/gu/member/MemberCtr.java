@@ -24,7 +24,7 @@ public class MemberCtr {
 
     @Autowired
     private MemberSvc memberSvc;
-    
+
     /**
      * 내정보.
      */
@@ -41,7 +41,8 @@ public class MemberCtr {
         
         return "member/memberForm";
     }
-    
+
+
     /**
      * 사용자 저장.
      */
@@ -72,6 +73,7 @@ public class MemberCtr {
 
         UtilEtc.responseJsonValue(response,"OK");
     }
+
     
     /**
      * 직원조회.

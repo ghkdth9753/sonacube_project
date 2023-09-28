@@ -2,5 +2,5 @@ projectKey=com.gu:project9
 serverUrl=http://localhost:9000
 serverVersion=10.2.0.77647
 dashboardUrl=http://localhost:9000/dashboard?id=com.gu%3Aproject9
-ceTaskId=AYrIFAO-bfTqjLJ3qjiR
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AYrIFAO-bfTqjLJ3qjiR
+ceTaskId=AYrUcsiiQrpvrYgmycGA
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AYrUcsiiQrpvrYgmycGA

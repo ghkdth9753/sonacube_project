@@ -48,18 +48,18 @@ public class LoginCtr {
         memberSvc.insertLogIn(mdo.getUserno());
         
         HttpSession session = request.getSession();
-        
-        session.setAttribute("userid", mdo.getUserid());
+
+        session.setAttribute("userid",mdo.getUserid());
         session.setAttribute("userrole",mdo.getUserrole());
-        session.setAttribute("userno",  mdo.getUserno());
-        session.setAttribute("usernm",  mdo.getUsernm());
+        session.setAttribute("userno",mdo.getUserno());
+        session.setAttribute("usernm",mdo.getUsernm());
         
         if ("Y".equals(loginInfo.getRemember())) {
             set_cookie("sid", loginInfo.getUserid(), response);
         } else { 
             set_cookie("sid", "", response);       
         }
-        
+
         return "redirect:/index";
     }   
     
@@ -102,6 +102,10 @@ public class LoginCtr {
         Cookie ck = new Cookie(cid, value);
         ck.setPath("/");
         ck.setMaxAge(cookieExpire);
+
+        // HttpOnly 플래그 설정
+        ck. setHttpOnly(true);
+
         res.addCookie(ck);        
     }
 

@@ -197,7 +197,7 @@
   </distributionManagement>
   <properties>
     <sonar.host.url>http://localhost:9000</sonar.host.url>
-    <sonar.login>squ_da48da8d5cc9b084bff15f30a3e2d6efbcfd2aab</sonar.login>
+    <sonar.token>squ_da48da8d5cc9b084bff15f30a3e2d6efbcfd2aab</sonar.token>
     <!-- <sonar.login>sqp_a44919436164dbb1cd10466705bd6beb7e6b10c9</sonar.login> -->
     <!-- UTF-8 인코딩 설정 추가 -->
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

@@ -2,6 +2,7 @@ package gu.member;
 
 import org.springframework.web.multipart.MultipartFile;
 
+
 public class UserVO {
     private String userno;
     private String userid;

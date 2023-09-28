@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.security.SecureRandom;
 
 import javax.imageio.ImageIO;
 
@@ -149,8 +150,15 @@ public class FileUtil {
      * 날짜로 새로운 파일명 부여.
      */
     public static String getNewName() {
+        SecureRandom secureRandom = new SecureRandom();
         SimpleDateFormat ft = new SimpleDateFormat("yyyyMMddhhmmssSSS");
-        return ft.format(new Date()) + (int) (Math.random() * 10);
+
+        // 의사난수 생성
+        byte[] randomBytes = new byte[8]; // 8 바이트 길이의 의사난수 생성
+        secureRandom.nextBytes(randomBytes);
+        long randomValue = Math.abs(secureRandom.nextLong());
+
+        return ft.format(new Date()) + randomValue;
     }
     
     public String getFileExtension(String filename) {

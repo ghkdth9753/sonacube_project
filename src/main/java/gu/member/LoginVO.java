@@ -1,5 +1,6 @@
 package gu.member;
 
+
 public class LoginVO {
     private String userid;
     private String userpw;
