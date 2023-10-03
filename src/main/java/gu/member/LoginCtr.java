@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import gu.member.UserVO;
 
+// 추가한 import 문
+import org.springframework.web.bind.annotation.RequestMethod;
+
 @Controller
 public class LoginCtr {    
     private static final Integer cookieExpire = 60 * 60 * 24 * 30; // 1 month
@@ -23,7 +26,7 @@ public class LoginCtr {
     /**
      * 로그인화면.
      */
-    @RequestMapping(value = "memberLogin")
+    @RequestMapping(value = "memberLogin", method = RequestMethod.GET)
     public String memberLogin(HttpServletRequest request, ModelMap modelMap) {
         String    userid = get_cookie("sid", request);    
 
@@ -35,7 +38,7 @@ public class LoginCtr {
     /**
      * 로그인 처리.
      */
-    @RequestMapping(value = "memberLoginChk")
+    @RequestMapping(value = "memberLoginChk", method = RequestMethod.POST)
     public String memberLoginChk(HttpServletRequest request,HttpServletResponse response, LoginVO loginInfo, ModelMap modelMap) {
 
         UserVO mdo = memberSvc.selectMember4Login(loginInfo);
@@ -66,7 +69,7 @@ public class LoginCtr {
     /**
      * 로그아웃.
      */
-    @RequestMapping(value = "memberLogout")
+    @RequestMapping(value = "memberLogout", method = RequestMethod.GET)
     public String memberLogout(HttpServletRequest request, ModelMap modelMap) {
         HttpSession session = request.getSession();
         
@@ -86,7 +89,7 @@ public class LoginCtr {
     /** 
      * 사용자가 관리자페이지에 접근하면 오류 출력.
      */
-    @RequestMapping(value = "noAuthMessage")
+    @RequestMapping(value = "noAuthMessage", method = RequestMethod.GET)
     public String noAuthMessage(HttpServletRequest request) {
         return "common/noAuth";
     }

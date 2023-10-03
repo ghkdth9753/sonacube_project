@@ -16,6 +16,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+// 추가한 import 문
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 @Controller
 public class FileDownload {
     static final Logger LOGGER = LoggerFactory.getLogger(FileDownload.class);
@@ -23,7 +27,7 @@ public class FileDownload {
     /**
      * 파일(첨부파일, 이미지등) 다운로드.
      */
-    @RequestMapping(value = "fileDownload")
+    @RequestMapping(value = "fileDownload", method = RequestMethod.GET)
     public void fileDownload(HttpServletRequest request,HttpServletResponse response) {
         String path = LocaleMessage.getMessage("info.filePath") + "/";
         

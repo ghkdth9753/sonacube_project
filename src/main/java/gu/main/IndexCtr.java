@@ -16,6 +16,9 @@ import gu.common.Field3VO;
 import gu.common.Util4calen;
 import gu.etc.EtcSvc;
 
+// 추가한 import 문
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller 
 public class IndexCtr {
@@ -27,7 +30,7 @@ public class IndexCtr {
     /**
      * main page. 
      */
-    @RequestMapping(value = "/index")
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String index(HttpServletRequest request, ModelMap modelMap) {
         String userno = request.getSession().getAttribute("userno").toString();
         etcSvc.setCommonAttribute(userno, modelMap);
@@ -52,7 +55,7 @@ public class IndexCtr {
      * week calendar in main page..
      * Ajax.
      */
-    @RequestMapping(value = "/moveDate")
+    @RequestMapping(value = "/moveDate", method = RequestMethod.GET)
     public String moveDate(HttpServletRequest request, ModelMap modelMap) {
         String userno = request.getSession().getAttribute("userno").toString();
         String date = request.getParameter("date");

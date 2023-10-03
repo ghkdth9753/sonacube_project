@@ -18,6 +18,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import gu.common.SearchVO;
 import gu.etc.EtcSvc;
 
+// 추가한 import 문
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 @Controller 
 public class MailCtr {
 
@@ -32,7 +36,7 @@ public class MailCtr {
     /**
      * 리스트.
      */
-    @RequestMapping(value = "/receiveMails")
+    @RequestMapping(value = "/receiveMails", method = RequestMethod.GET)
     public String receiveMails(HttpServletRequest request, SearchVO searchVO, ModelMap modelMap) {
         String userno = request.getSession().getAttribute("userno").toString();
         List<?> mailInfoList = mailSvc.selectMailInfoList(userno);
@@ -53,7 +57,7 @@ public class MailCtr {
         return "mail/ReceiveMails";
     }
     
-    @RequestMapping(value = "/sendMails")
+    @RequestMapping(value = "/sendMails", method = RequestMethod.GET)
     public String sendMails(HttpServletRequest request, SearchVO searchVO, ModelMap modelMap) {
         String userno = request.getSession().getAttribute("userno").toString();
         List<?> mailInfoList = mailSvc.selectMailInfoList(userno);
@@ -77,7 +81,7 @@ public class MailCtr {
     /** 
      * 쓰기. 
      */
-    @RequestMapping(value = "/mailForm")
+    @RequestMapping(value = "/mailForm", method = RequestMethod.GET)
     public String mailForm(HttpServletRequest request, MailVO mailInfo, ModelMap modelMap) {
         String userno = request.getSession().getAttribute("userno").toString();
         List<?> mailInfoList = mailSvc.selectMailInfoList(userno);
@@ -102,7 +106,7 @@ public class MailCtr {
     /**
      * 저장.
      */
-    @RequestMapping(value = "/mailSave")
+    @RequestMapping(value = "/mailSave", method = RequestMethod.POST)
     public String mailSave(HttpServletRequest request, MailVO mailInfo) {
         String userno = request.getSession().getAttribute("userno").toString();
 
@@ -117,14 +121,14 @@ public class MailCtr {
     /**
      * 읽기.
      */
-    @RequestMapping(value = "/receiveMailRead")
+    @RequestMapping(value = "/receiveMailRead", method = RequestMethod.GET)
     public String receiveMailRead(HttpServletRequest request, MailVO mailVO, ModelMap modelMap) {
     	mailRead(request, mailVO, modelMap);
         
         return "mail/ReceiveMailRead";
     }
     
-    @RequestMapping(value = "/sendMailRead")
+    @RequestMapping(value = "/sendMailRead", method = RequestMethod.GET)
     public String sendMailRead(HttpServletRequest request, MailVO mailVO, ModelMap modelMap) {
     	
     	mailRead(request, mailVO, modelMap);
@@ -149,14 +153,14 @@ public class MailCtr {
     /**
      * 삭제.
      */
-    @RequestMapping(value = "/receiveMailDelete")
+    @RequestMapping(value = "/receiveMailDelete", method = RequestMethod.GET)
     public String receiveMailDelete(HttpServletRequest request, MailVO mailVO) {
 
         mailSvc.deleteMail(mailVO);
         
         return "redirect:/receiveMails";
     }
-    @RequestMapping(value = "/receiveMailsDelete")
+    @RequestMapping(value = "/receiveMailsDelete", method = RequestMethod.GET)
     public String receiveMailsDelete(HttpServletRequest request, String[] checkRow) {
 
         mailSvc.deleteMails(checkRow);
@@ -164,14 +168,14 @@ public class MailCtr {
         return "redirect:/receiveMails";
     }
 
-    @RequestMapping(value = "/sendMailDelete")
+    @RequestMapping(value = "/sendMailDelete", method = RequestMethod.GET)
     public String sendMailDelete(HttpServletRequest request, MailVO mailVO) {
 
         mailSvc.deleteMail(mailVO);
         
         return "redirect:/sendMails";
     }
-    @RequestMapping(value = "/sendMailsDelete")
+    @RequestMapping(value = "/sendMailsDelete", method = RequestMethod.GET)
     public String sendMailsDelete(HttpServletRequest request, String[] checkRow) {
 
         mailSvc.deleteMails(checkRow);
@@ -181,7 +185,7 @@ public class MailCtr {
     /**
      * 
      */
-    @RequestMapping(value = "/getReceiveMail")
+    @RequestMapping(value = "/getReceiveMail", method = RequestMethod.GET)
     public String importMail(HttpServletRequest request, ModelMap modelMap) {
         HttpSession session = request.getSession();
 

@@ -11,6 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import gu.board.BoardSearchVO;
 
+// 추가한 import 문
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 @Controller
 public class List4User {
 
@@ -20,7 +24,7 @@ public class List4User {
     /**
      * alert 리스트 전체.
      */
-    @RequestMapping(value = "/list4User")
+    @RequestMapping(value = "/list4User", method = RequestMethod.POST)
     public String list4User(HttpServletRequest request, BoardSearchVO searchVO, ModelMap modelMap) {
         String userno = request.getParameter("userno");
         searchVO.setSearchExt1(userno);

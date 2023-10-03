@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import gu.common.SearchVO;
 import gu.etc.EtcSvc;
 
+// 추가한 import 문
+import org.springframework.web.bind.annotation.RequestMethod;
+
 @Controller 
 public class ChkCtr {
 
@@ -27,7 +30,7 @@ public class ChkCtr {
     /**
      * 리스트.
      */
-    @RequestMapping(value = "/chkList")
+    @RequestMapping(value = "/chkList", method = RequestMethod.GET)
     public String chkList(HttpServletRequest request, SearchVO searchVO, ModelMap modelMap) {
         // 페이지 공통: alert
         String userno = request.getSession().getAttribute("userno").toString();
@@ -46,7 +49,7 @@ public class ChkCtr {
     /**
      * 선택된 행 삭제.
      */
-    @RequestMapping(value = "/chkDelete")
+    @RequestMapping(value = "/chkDelete", method = RequestMethod.GET)
     public String chkDelete(HttpServletRequest request, String[] checkRow) {
     	
         crudSvc.deleteChk(checkRow);

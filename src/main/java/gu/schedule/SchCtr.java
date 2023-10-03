@@ -16,6 +16,10 @@ import gu.common.SearchVO;
 import gu.common.Util4calen;
 import gu.etc.EtcSvc;
 
+// 추가한 import 문
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 @Controller 
 public class SchCtr {
 
@@ -30,7 +34,7 @@ public class SchCtr {
     /**
      * 리스트.
      */
-    @RequestMapping(value = "/schList")
+    @RequestMapping(value = "/schList", method = RequestMethod.GET)
     public String schList(HttpServletRequest request, MonthVO searchVO, ModelMap modelMap) {
         // 페이지 공통: alert
         String userno = request.getSession().getAttribute("userno").toString();
@@ -57,7 +61,7 @@ public class SchCtr {
     /** 
      * 쓰기. 
      */
-    @RequestMapping(value = "/schForm")
+    @RequestMapping(value = "/schForm", method = RequestMethod.GET)
     public String schForm(HttpServletRequest request, SchVO schInfo, ModelMap modelMap) {
         // 페이지 공통: alert
         String userno = request.getSession().getAttribute("userno").toString();
@@ -92,7 +96,7 @@ public class SchCtr {
     /**
      * 저장.
      */
-    @RequestMapping(value = "/schSave")
+    @RequestMapping(value = "/schSave", method = RequestMethod.POST)
     public String schSave(HttpServletRequest request, SchVO schInfo, ModelMap modelMap) {
         String userno = request.getSession().getAttribute("userno").toString();
     	schInfo.setUserno(userno);
@@ -105,7 +109,7 @@ public class SchCtr {
     /**
      * 읽기.
      */
-    @RequestMapping(value = "/schRead4Ajax")
+    @RequestMapping(value = "/schRead4Ajax", method = RequestMethod.GET)
     public String schRead4Ajax(HttpServletRequest request, SchVO schVO, String cddate, ModelMap modelMap) {
         SchVO schInfo = schSvc.selectSchOne4Read(schVO);
 
@@ -117,7 +121,7 @@ public class SchCtr {
     /**
      * 읽기.
      */
-    @RequestMapping(value = "/schRead")
+    @RequestMapping(value = "/schRead", method = RequestMethod.GET)
     public String schRead(HttpServletRequest request, SchVO schVO, ModelMap modelMap) {
         // 페이지 공통: alert
         String userno = request.getSession().getAttribute("userno").toString();
@@ -135,7 +139,7 @@ public class SchCtr {
     /**
      * 삭제.
      */
-    @RequestMapping(value = "/schDelete")
+    @RequestMapping(value = "/schDelete", method = RequestMethod.GET)
     public String schDelete(HttpServletRequest request, SchVO schVO) {
 
         schSvc.deleteSch(schVO);

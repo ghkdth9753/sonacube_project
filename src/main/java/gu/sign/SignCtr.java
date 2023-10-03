@@ -15,6 +15,10 @@ import gu.admin.sign.SignDocTypeVO;
 import gu.common.SearchVO;
 import gu.etc.EtcSvc;
 
+// 추가한 import 문
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 @Controller 
 public class SignCtr {
 
@@ -32,7 +36,7 @@ public class SignCtr {
     /**
      * 결제 받을 문서 리스트.
      */
-    @RequestMapping(value = "/signListTobe")
+    @RequestMapping(value = "/signListTobe", method = RequestMethod.GET)
     public String signListTobe(HttpServletRequest request, SearchVO searchVO, ModelMap modelMap) {
         // 페이지 공통: alert
         String userno = request.getSession().getAttribute("userno").toString();
@@ -53,7 +57,7 @@ public class SignCtr {
     /**
      * 결제 할 문서 리스트.
      */
-    @RequestMapping(value = "/signListTo")
+    @RequestMapping(value = "/signListTo", method = RequestMethod.GET)
     public String signListTo(HttpServletRequest request, SearchVO searchVO, ModelMap modelMap) {
         // 페이지 공통: alert
         String userno = request.getSession().getAttribute("userno").toString();
@@ -75,7 +79,7 @@ public class SignCtr {
     /** 
      * 기안하기. 
      */
-    @RequestMapping(value = "/signDocTypeList")
+    @RequestMapping(value = "/signDocTypeList", method = RequestMethod.GET)
     public String signDocTypeList(HttpServletRequest request, SearchVO searchVO, ModelMap modelMap) {
         // 페이지 공통: alert
         String userno = request.getSession().getAttribute("userno").toString();
@@ -89,7 +93,7 @@ public class SignCtr {
         return "sign/SignDocTypeList";
     }
     
-    @RequestMapping(value = "/signDocForm")
+    @RequestMapping(value = "/signDocForm", method = RequestMethod.GET)
     public String signDocForm(HttpServletRequest request, SignDocVO signDocInfo, ModelMap modelMap) {
         // 페이지 공통: alert
         String userno = request.getSession().getAttribute("userno").toString();
@@ -125,7 +129,7 @@ public class SignCtr {
     /**
      * 저장.
      */
-    @RequestMapping(value = "/signDocSave")
+    @RequestMapping(value = "/signDocSave", method = RequestMethod.POST)
     public String signDocSave(HttpServletRequest request, SignDocVO signDocInfo, ModelMap modelMap) {
         String userno = request.getSession().getAttribute("userno").toString();
     	signDocInfo.setUserno(userno);
@@ -138,7 +142,7 @@ public class SignCtr {
     /**
      * 읽기.
      */
-    @RequestMapping(value = "/signDocRead")
+    @RequestMapping(value = "/signDocRead", method = RequestMethod.GET)
     public String signDocRead(HttpServletRequest request, SignDocVO SignDocVO, ModelMap modelMap) {
         // 페이지 공통: alert
         String userno = request.getSession().getAttribute("userno").toString();
@@ -161,7 +165,7 @@ public class SignCtr {
     /**
      * 삭제.
      */
-    @RequestMapping(value = "/signDocDelete")
+    @RequestMapping(value = "/signDocDelete", method = RequestMethod.GET)
     public String signDocDelete(HttpServletRequest request, SignDocVO SignDocVO) {
 
         signSvc.deleteSignDoc(SignDocVO);
@@ -172,7 +176,7 @@ public class SignCtr {
     /**
      * 결재.
      */
-    @RequestMapping(value = "/signSave")
+    @RequestMapping(value = "/signSave", method = RequestMethod.POST)
     public String signSave(HttpServletRequest request, SignVO signInfo) {
 
         signSvc.updateSign(signInfo);
@@ -182,7 +186,7 @@ public class SignCtr {
     /**
      * 회수.
      */
-    @RequestMapping(value = "/signDocCancel")
+    @RequestMapping(value = "/signDocCancel", method = RequestMethod.GET)
     public String signDocCancel(HttpServletRequest request, String docno) {
         signSvc.updateSignDocCancel(docno);
         

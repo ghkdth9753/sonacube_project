@@ -11,6 +11,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
+// 추가한 import 문
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 @Controller
 public class Upload4ckeditor {
     static final Logger LOGGER = LoggerFactory.getLogger(AdminInterceptor.class);
@@ -18,7 +22,7 @@ public class Upload4ckeditor {
     /**
      * ckeditor의 이미지 업로드 처리.
      */
-    @RequestMapping(value = "/upload4ckeditor")
+    @RequestMapping(value = "/upload4ckeditor", method = RequestMethod.GET)
     public void upload(HttpServletResponse response, HttpServletRequest request, MultipartFile upload) {
         String callback = request.getParameter("CKEditorFuncNum");
         

@@ -9,6 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+// 추가한 import 문
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 @Controller
 public class AlertMsgCtr {
 
@@ -18,7 +22,7 @@ public class AlertMsgCtr {
     /**
      * alert 리스트 전체.
      */
-    @RequestMapping(value = "/alertList")
+    @RequestMapping(value = "/alertList", method = RequestMethod.POST)
        public String alertList(HttpServletRequest request, ModelMap modelMap) {
         String userno = request.getSession().getAttribute("userno").toString();
         
@@ -32,7 +36,7 @@ public class AlertMsgCtr {
     /**
      * alert 리스트 Top 5.
      */
-    @RequestMapping(value = "/alertList4Ajax")
+    @RequestMapping(value = "/alertList4Ajax", method = RequestMethod.POST)
     public String alertList4Ajax(HttpServletRequest request, ModelMap modelMap) {
         String userno = request.getSession().getAttribute("userno").toString();
         

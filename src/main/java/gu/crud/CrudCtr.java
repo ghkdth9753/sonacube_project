@@ -13,6 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import gu.common.SearchVO;
 import gu.etc.EtcSvc;
 
+// 추가한 import 문
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 @Controller 
 public class CrudCtr {
 
@@ -27,7 +31,7 @@ public class CrudCtr {
     /**
      * 리스트.
      */
-    @RequestMapping(value = "/crudList")
+    @RequestMapping(value = "/crudList", method = RequestMethod.GET)
     public String crudList(HttpServletRequest request, SearchVO searchVO, ModelMap modelMap) {
         // 페이지 공통: alert
         String userno = request.getSession().getAttribute("userno").toString();
@@ -47,7 +51,7 @@ public class CrudCtr {
     /** 
      * 쓰기. 
      */
-    @RequestMapping(value = "/crudForm")
+    @RequestMapping(value = "/crudForm", method = RequestMethod.GET)
     public String crudForm(HttpServletRequest request, CrudVO crudInfo, ModelMap modelMap) {
         // 페이지 공통: alert
         String userno = request.getSession().getAttribute("userno").toString();
@@ -67,7 +71,7 @@ public class CrudCtr {
     /**
      * 저장.
      */
-    @RequestMapping(value = "/crudSave")
+    @RequestMapping(value = "/crudSave", method = RequestMethod.POST)
     public String crudSave(HttpServletRequest request, CrudVO crudInfo, ModelMap modelMap) {
         String userno = request.getSession().getAttribute("userno").toString();
     	crudInfo.setUserno(userno);
@@ -80,7 +84,7 @@ public class CrudCtr {
     /**
      * 읽기.
      */
-    @RequestMapping(value = "/crudRead")
+    @RequestMapping(value = "/crudRead", method = RequestMethod.GET)
     public String crudRead(HttpServletRequest request, CrudVO crudVO, ModelMap modelMap) {
         // 페이지 공통: alert
         String userno = request.getSession().getAttribute("userno").toString();
@@ -99,7 +103,7 @@ public class CrudCtr {
     /**
      * 삭제.
      */
-    @RequestMapping(value = "/crudDelete")
+    @RequestMapping(value = "/crudDelete", method = RequestMethod.GET)
     public String crudDelete(HttpServletRequest request, CrudVO crudVO) {
 
         crudSvc.deleteCrud(crudVO);

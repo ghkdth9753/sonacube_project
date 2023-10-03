@@ -14,6 +14,10 @@ import gu.admin.organ.UserSvc;
 import gu.common.SearchVO;
 import gu.common.TreeMaker;
 
+// 추가한 import 문
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 @Controller
 public class PopUserCtr {
 
@@ -26,7 +30,7 @@ public class PopUserCtr {
     /**
      * 부서리스트.
      */
-    @RequestMapping(value = "/popupDept")
+    @RequestMapping(value = "/popupDept", method = RequestMethod.POST)
        public String popupDept(ModelMap modelMap) {
         List<?> listview   = deptSvc.selectDepartment();
 
@@ -41,7 +45,7 @@ public class PopUserCtr {
     /**
      *  부서리스트 for 사용자.
      */
-    @RequestMapping(value = "/popupUser")
+    @RequestMapping(value = "/popupUser", method = RequestMethod.POST)
     public String popupUser(ModelMap modelMap) {
         List<?> listview   = deptSvc.selectDepartment();
 
@@ -56,7 +60,7 @@ public class PopUserCtr {
     /**
      * 선택된 부서의 User 리스트.
      */
-    @RequestMapping(value = "/popupUsersByDept")
+    @RequestMapping(value = "/popupUsersByDept", method = RequestMethod.POST)
     public String popupUsersByDept(HttpServletRequest request, SearchVO searchVO, ModelMap modelMap) {
         String deptno = request.getParameter("deptno");
         searchVO.setSearchExt1(deptno);
@@ -71,7 +75,7 @@ public class PopUserCtr {
     /**
      *  부서리스트 for 사용자들.
      */
-    @RequestMapping(value = "/popupUsers")
+    @RequestMapping(value = "/popupUsers", method = RequestMethod.POST)
     public String popupUsers(ModelMap modelMap) {
         popupUser(modelMap);
         
@@ -81,7 +85,7 @@ public class PopUserCtr {
     /**
      *  부서리스트 for 사용자들 - 결재 경로 지정용.
      */
-    @RequestMapping(value = "/popupUsers4SignPath")
+    @RequestMapping(value = "/popupUsers4SignPath", method = RequestMethod.POST)
     public String popupUsers4SignPath(ModelMap modelMap) {
         popupUser(modelMap);
         
@@ -91,7 +95,7 @@ public class PopUserCtr {
     /**
      * User 리스트  for 사용자들.
      */
-    @RequestMapping(value = "/popupUsers4Users")
+    @RequestMapping(value = "/popupUsers4Users", method = RequestMethod.POST)
     public String popupUsers4Users(HttpServletRequest request, SearchVO searchVO, ModelMap modelMap) {
         popupUsersByDept(request, searchVO, modelMap);
         

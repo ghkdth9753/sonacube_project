@@ -24,6 +24,11 @@ import gu.common.TreeMaker;
 import gu.common.UtilEtc;
 import gu.etc.EtcSvc;
 
+// 추가한 import 문
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+
 @Controller 
 public class BoardCtr {
 
@@ -41,7 +46,7 @@ public class BoardCtr {
     /**
      * 리스트.
      */
-    @RequestMapping(value = "/boardList")
+    @RequestMapping(value = "/boardList", method = RequestMethod.GET)
     public String boardList(HttpServletRequest request, BoardSearchVO searchVO, ModelMap modelMap) {
         String globalKeyword = request.getParameter("globalKeyword");  // it's search from left side bar
         if (globalKeyword!=null & !"".equals(globalKeyword)) {
@@ -78,7 +83,7 @@ public class BoardCtr {
     /** 
      * 글 쓰기. 
      */
-    @RequestMapping(value = "/boardForm")
+    @RequestMapping(value = "/boardForm", method = RequestMethod.GET)
     public String boardForm(HttpServletRequest request, ModelMap modelMap) {
         String userno = request.getSession().getAttribute("userno").toString();
         
@@ -109,7 +114,7 @@ public class BoardCtr {
     /**
      * 글 저장.
      */
-    @RequestMapping(value = "/boardSave")
+    @RequestMapping(value = "/boardSave", method = RequestMethod.POST)
     public String boardSave(HttpServletRequest request, BoardVO boardInfo) {
         String userno = request.getSession().getAttribute("userno").toString();
         boardInfo.setUserno(userno);
@@ -133,7 +138,7 @@ public class BoardCtr {
     /**
      * 글 읽기.
      */
-    @RequestMapping(value = "/boardRead")
+    @RequestMapping(value = "/boardRead", method = RequestMethod.GET)
     public String boardRead(HttpServletRequest request, ModelMap modelMap) {
         String userno = request.getSession().getAttribute("userno").toString();
         
@@ -166,7 +171,7 @@ public class BoardCtr {
     /**
      * 글 삭제.
      */
-    @RequestMapping(value = "/boardDelete")
+    @RequestMapping(value = "/boardDelete", method = RequestMethod.GET)
     public String boardDelete(HttpServletRequest request) {
         String brdno = request.getParameter("brdno");
         String bgno = request.getParameter("bgno");
@@ -188,8 +193,8 @@ public class BoardCtr {
     /**
      * 게시판 트리. Ajax용.     
      */
-    @RequestMapping(value = "/boardListByAjax")
-       public void boardListByAjax(HttpServletResponse response, ModelMap modelMap) {
+    @RequestMapping(value = "/boardListByAjax", method = RequestMethod.POST)
+        public void boardListByAjax(HttpServletResponse response, ModelMap modelMap) {
         List<?> listview   = boardGroupSvc.selectBoardGroupList();
 
         TreeMaker tm = new TreeMaker();
@@ -208,7 +213,7 @@ public class BoardCtr {
     /**
      * 좋아요 저장.     
      */
-    @RequestMapping(value = "/boardLikeAdd")
+    @RequestMapping(value = "/boardLikeAdd", method = RequestMethod.POST)
     public void addBoardLike(HttpServletRequest request, HttpServletResponse response) {
         String brdno = request.getParameter("brdno");
         String userno = request.getSession().getAttribute("userno").toString();
@@ -225,7 +230,7 @@ public class BoardCtr {
     /**
      * 댓글 저장.
      */
-    @RequestMapping(value = "/boardReplySave")
+    @RequestMapping(value = "/boardReplySave", method = RequestMethod.POST)
     public String boardReplySave(HttpServletRequest request, HttpServletResponse response, BoardReplyVO boardReplyInfo, ModelMap modelMap) {
         String userno = request.getSession().getAttribute("userno").toString();
         boardReplyInfo.setUserno(userno);
@@ -249,7 +254,7 @@ public class BoardCtr {
     /**
      * 댓글 삭제.
      */
-    @RequestMapping(value = "/boardReplyDelete")
+    @RequestMapping(value = "/boardReplyDelete", method = RequestMethod.GET)
     public void boardReplyDelete(HttpServletRequest request, HttpServletResponse response, BoardReplyVO boardReplyInfo) {
         String userno = request.getSession().getAttribute("userno").toString();
         boardReplyInfo.setUserno(userno);

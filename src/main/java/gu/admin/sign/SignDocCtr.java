@@ -13,6 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import gu.common.SearchVO;
 import gu.etc.EtcSvc;
 
+// 추가한 import 문
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 @Controller 
 public class SignDocCtr {
 
@@ -27,7 +31,7 @@ public class SignDocCtr {
     /**
      * 리스트.
      */
-    @RequestMapping(value = "/adSignDocTypeList")
+    @RequestMapping(value = "/adSignDocTypeList", method = RequestMethod.GET)
     public String signDocTypeList(HttpServletRequest request, SearchVO searchVO, ModelMap modelMap) {
         // 페이지 공통: alert
         String userno = request.getSession().getAttribute("userno").toString();
@@ -46,7 +50,7 @@ public class SignDocCtr {
     /** 
      * 쓰기. 
      */
-    @RequestMapping(value = "/adSignDocTypeForm")
+    @RequestMapping(value = "/adSignDocTypeForm", method = RequestMethod.GET)
     public String signDocTypeForm(HttpServletRequest request, SignDocTypeVO signInfo, ModelMap modelMap) {
         // 페이지 공통: alert
         String userno = request.getSession().getAttribute("userno").toString();
@@ -66,7 +70,7 @@ public class SignDocCtr {
     /**
      * 저장.
      */
-    @RequestMapping(value = "/adSignDocTypeSave")
+    @RequestMapping(value = "/adSignDocTypeSave", method = RequestMethod.POST)
     public String signDocTypeSave(HttpServletRequest request, SignDocTypeVO signInfo, ModelMap modelMap) {
     	
         signDocSvc.insertSignDocType(signInfo);
@@ -77,7 +81,7 @@ public class SignDocCtr {
     /**
      * 삭제.
      */
-    @RequestMapping(value = "/adSignDocTypeDelete")
+    @RequestMapping(value = "/adSignDocTypeDelete", method = RequestMethod.GET)
     public String signDocTypeDelete(HttpServletRequest request, SignDocTypeVO signVO) {
 
         signDocSvc.deleteSignDocType(signVO);

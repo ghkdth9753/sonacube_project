@@ -19,6 +19,9 @@ import gu.common.MakeExcel;
 import gu.common.Util4calen;
 import gu.etc.EtcSvc;
 
+// 추가한 import 문
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller 
 public class SampleCtr {
@@ -35,7 +38,7 @@ public class SampleCtr {
     /**
      * 조직도/사용자 선택 샘플. 
      */
-    @RequestMapping(value = "/sample1")
+    @RequestMapping(value = "/sample1", method = RequestMethod.GET)
     public String sample1(HttpServletRequest request, ModelMap modelMap) {
         String userno = request.getSession().getAttribute("userno").toString();
         
@@ -47,7 +50,7 @@ public class SampleCtr {
     /**
      * 날짜 선택 샘플. 
      */
-    @RequestMapping(value = "/sample2")
+    @RequestMapping(value = "/sample2", method = RequestMethod.GET)
     public String sample2(HttpServletRequest request, ModelMap modelMap) {
         String userno = request.getSession().getAttribute("userno").toString();
         
@@ -63,7 +66,7 @@ public class SampleCtr {
     /**
      * 챠트 사용 샘플. 
      */
-    @RequestMapping(value = "/sample3")
+    @RequestMapping(value = "/sample3", method = RequestMethod.GET)
     public String sample3(HttpServletRequest request, ModelMap modelMap) {
         String userno = request.getSession().getAttribute("userno").toString();
         
@@ -79,7 +82,7 @@ public class SampleCtr {
     /**
      * List & Excel 사용 샘플. 
      */
-    @RequestMapping(value = "/sample4")
+    @RequestMapping(value = "/sample4", method = RequestMethod.GET)
     public String sample4(HttpServletRequest request, BoardSearchVO searchVO, ModelMap modelMap) {
         String userno = request.getSession().getAttribute("userno").toString();
         
@@ -99,7 +102,7 @@ public class SampleCtr {
      * List & Excel 사용 샘플.
      * Excel 생성 및 다운로드.
      */
-    @RequestMapping(value = "/sample4Excel")
+    @RequestMapping(value = "/sample4Excel", method = RequestMethod.GET)
     public void sample4Excel(HttpServletRequest request, HttpServletResponse response, BoardSearchVO searchVO) {
        
         // 게시판은 페이징 처리를 하지만 엑셀은 모든 데이터를 다운로드
